@@ -1,12 +1,12 @@
-package com.framgia.toandoan;
+package com.framgia.toandoan.ui.activity;
 
-import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.framgia.toandoan.R;
 import com.framgia.toandoan.apiservice.APIUtils;
 import com.framgia.toandoan.apiservice.MarvelService;
 import com.framgia.toandoan.apiservice.ServiceGenerator;
@@ -21,7 +21,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity implements
     View.OnClickListener {
     private TextView mTextResult;
-    private Dialog mDialog;
+    private ProgressDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +39,9 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void initDialog() {
-        mDialog = new AlertDialog.Builder(this)
-            .setTitle("Get Charactor...")
-            .setMessage("Loading....")
-            .create();
+        mDialog = new ProgressDialog(this);
+        mDialog.setCancelable(false);
+        mDialog.setMessage("Loading...");
     }
 
     private void showDialog() {
